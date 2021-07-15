@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Cosmetics Shop</string>
     <string name="stay_beautiful">Stay Beautiful</string>
-    <string name="description">Description :</string>
-    <string name="price">Price :</string>
+    <string name="product_description">Description :</string>
+    <string name="product_price">Price :</string>
     <string name="retry">Retry</string>
-    <string name="show_more">Show More</string>
+    <string name="show_more_product">Show More</string>
 </resources>

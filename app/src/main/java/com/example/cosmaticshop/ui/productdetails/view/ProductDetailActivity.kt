@@ -24,28 +24,28 @@ class ProductDetailActivity : AppCompatActivity() {
         setContentView(binding?.root)
 
         makeUpProductsModel = intent.getParcelableExtra(Constants.MAKE_UP_MODEL)
-        binding?.txtBrandName?.text = makeUpProductsModel?.name?.capitalize(Locale.ROOT)
-        Glide.with(binding?.imgProduct?.context!!)
+        binding?.tvBrandName?.text = makeUpProductsModel?.name
+        Glide.with(binding?.ivProduct?.context!!)
             .load(makeUpProductsModel?.imageLink)
             .placeholder(R.drawable.ic_loading_dots)
             .error(R.drawable.ic_no_image)
-            .into((binding!!.imgProduct))
-        binding?.txtDescription?.text = makeUpProductsModel?.description
-        binding?.txtPrice?.text = makeUpProductsModel?.priceSign+" "+makeUpProductsModel?.price
+            .into((binding!!.ivProduct))
+        binding?.tvDescription?.text = makeUpProductsModel?.description
+        val priceSign = makeUpProductsModel?.priceSign
+        val productPrice =makeUpProductsModel?.price
+
+        binding?.tvPrice?.text = ("$priceSign $productPrice")
         /**
          * Handles the click on the product type
          */
         binding?.txtShowMore?.setOnClickListener {
             Intent().apply {
-                intent =  Intent(this@ProductDetailActivity,WebLinkActivity::class.java)
+                intent = Intent(this@ProductDetailActivity, WebLinkActivity::class.java)
                 intent.putExtra(WEB_LINK, makeUpProductsModel?.websiteLink)
                 startActivity(intent)
             }
 
         }
-
-
-
 
     }
 }

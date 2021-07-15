@@ -5,8 +5,6 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
-
-import android.view.WindowManager
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cosmaticshop.databinding.ActivitySplashBinding
 import com.example.cosmaticshop.ui.main.view.MainActivity
@@ -41,7 +39,6 @@ class SplashActivity : AppCompatActivity() {
             startActivity(intent)
             finish()
         }, mTime) // 3000 is the delayed time in milliseconds.
-
 
     }
 }

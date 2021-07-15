@@ -3,10 +3,8 @@ package com.example.cosmaticshop.ui.producttype.view
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.cosmaticshop.data.model.MakeUpProductsModel
 import com.example.cosmaticshop.databinding.ActivityProductTypeBinding
@@ -25,22 +23,22 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
     var binding: ActivityProductTypeBinding? = null
-    var productTypeInterface: ProductTypeInterface? = null
+    private var productTypeInterface: ProductTypeInterface? = null
     private var productTypeAdapter: ProductTypeAdapter? = null
     var brandName: String = ""
     private val productTypeViewModel: ProductTypeViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = ActivityProductTypeBinding.inflate(getLayoutInflater())
-        setContentView(binding?.getRoot())
+        binding = ActivityProductTypeBinding.inflate(layoutInflater)
+        setContentView(binding?.root)
         productTypeInterface = this
         brandName = intent?.getStringExtra(BRAND_NAME).toString()
-        binding?.txtBrandName?.text = brandName
+        binding?.tvBrandName?.text = brandName
 
         setupUI()
         setupObserver(brandName)
 
-        //Click listner on Retry Button
+        //Click Listener on Retry Button
         binding?.btnRetry?.setOnClickListener {
             setupObserver(brandName)
         }
@@ -83,8 +81,8 @@ class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
      * RecyclerView Visibility Visible
      */
     private fun showRecyclerView() {
-        binding?.progressBar?.visibility = View.GONE
-        binding?.recyclerProductList?.visibility = View.VISIBLE
+        binding?.progressBarLoading?.visibility = View.GONE
+        binding?.recyclerViewProductList?.visibility = View.VISIBLE
         binding?.btnRetry?.visibility = View.GONE
     }
 
@@ -92,8 +90,8 @@ class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
      * ProgressBar Visibility Visible
      */
     private fun showProgressBar() {
-        binding?.progressBar?.visibility = View.VISIBLE
-        binding?.recyclerProductList?.visibility = View.GONE
+        binding?.progressBarLoading?.visibility = View.VISIBLE
+        binding?.recyclerViewProductList?.visibility = View.GONE
         binding?.btnRetry?.visibility = View.GONE
 
     }
@@ -102,21 +100,19 @@ class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
      * RetryImage Visibility Visible
      */
     private fun showRetryImage(message: String?) {
-        binding?.progressBar?.visibility = View.GONE
-        binding?.recyclerProductList?.visibility = View.GONE
+        binding?.progressBarLoading?.visibility = View.GONE
+        binding?.recyclerViewProductList?.visibility = View.GONE
         binding?.btnRetry?.visibility = View.VISIBLE
         //Toast.makeText(this, message, Toast.LENGTH_LONG).show()
     }
-
-
 
     /**
      * Setups the UI
      */
     private fun setupUI() {
-        binding?.recyclerProductList?.layoutManager = LinearLayoutManager(this)
+        binding?.recyclerViewProductList?.layoutManager = LinearLayoutManager(this)
         productTypeAdapter = ProductTypeAdapter(arrayListOf(), productTypeInterface)
-        binding?.recyclerProductList?.adapter = productTypeAdapter
+        binding?.recyclerViewProductList?.adapter = productTypeAdapter
     }
 
     /**

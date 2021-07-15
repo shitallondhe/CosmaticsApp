@@ -11,10 +11,9 @@ import com.example.cosmaticshop.utils.NetworkHelper
 import com.example.cosmaticshop.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
 import java.io.IOException
 import javax.inject.Inject
-import javax.net.ssl.HttpsURLConnection
+
 
 /**
  * View model of the main screen

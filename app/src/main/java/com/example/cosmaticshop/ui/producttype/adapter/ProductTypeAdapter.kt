@@ -26,25 +26,24 @@ class ProductTypeAdapter(
         @SuppressLint("DefaultLocale")
         fun bind(makeup: MakeUpProductsModel) {
 
-
             binding.apply {
-                txtProductType.text = makeup.productType?.capitalize()
-                txtProductDesc.text = makeup.description
+                tvProductName.text = makeup.productType
+                tvProductDescription.text = makeup.description
                 //number of line you want to short
-                txtProductDesc.setShowingLine(4)
+                tvProductDescription.setShowingLine(4)
 
-                txtProductDesc.addShowMoreText("Continue")
-                txtProductDesc.addShowLessText("Less")
+                tvProductDescription.addShowMoreText("Continue")
+                tvProductDescription.addShowLessText("Less")
 
-                txtProductDesc.setShowMoreColor(Color.RED) // or other color
-                txtProductDesc.setShowLessTextColor(Color.RED)
+                tvProductDescription.setShowMoreColor(Color.RED) // or other color
+                tvProductDescription.setShowLessTextColor(Color.RED)
 
                 val imgLink = makeup.imageLink
-                Glide.with(imgProduct.context)
+                Glide.with(ivProduct.context)
                     .load(imgLink)
                     .placeholder(R.drawable.ic_loading_dots)
                     .error(R.drawable.ic_no_image)
-                    .into(imgProduct)
+                    .into(ivProduct)
             }
 
             binding.cardContainer.setOnClickListener {
@@ -69,7 +68,6 @@ class ProductTypeAdapter(
         return DataViewHolder(binding)
 
     }
-
 
     override fun getItemCount(): Int = makeupList.size
 

@@ -10,7 +10,7 @@
         tools:context=".ui.splash.view.SplashActivity">
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imgSplash"
+            android:id="@+id/iv_splash"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@drawable/ic_splash"
@@ -19,8 +19,6 @@
             app:layout_constraintRight_toRightOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

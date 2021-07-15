@@ -8,33 +8,34 @@ import androidx.appcompat.app.AppCompatActivity
 import com.example.cosmaticshop.databinding.ActivityWebLinkBinding
 import com.example.cosmaticshop.utils.Constants.Companion.WEB_LINK
 
-
 /**
  * WebLinkActivity
  */
 class WebLinkActivity : AppCompatActivity() {
     var binding: ActivityWebLinkBinding? = null
-    var weblink: String? = null
+    private var weblink: String? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWebLinkBinding.inflate(layoutInflater)
         setContentView(binding?.root)
+        binding?.progressBar?.visibility = View.VISIBLE
         weblink = intent.getStringExtra(WEB_LINK)
         openWebView(weblink)
+
     }
 
     /**
-     *Open Weblink in webview
+     *Open Weblink in WebView
      **/
     private fun openWebView(weblink: String?) {
 
         if (weblink == null || weblink.isEmpty()) finish()
 
-        binding?.webview?.webViewClient = MyWebViewClient()
-        binding?.webview?.scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
-        binding?.webview?.settings?.javaScriptEnabled = true
-        binding?.webview?.webViewClient = WebViewClient()
-        weblink?.let { binding?.webview?.loadUrl(it) }
+        binding?.webView?.webViewClient = MyWebViewClient()
+        binding?.webView?.scrollBarStyle = View.SCROLLBARS_INSIDE_OVERLAY
+        binding?.webView?.settings?.setJavaScriptEnabled(true)
+        weblink?.let { binding?.webView?.loadUrl(it) }
 
     }
 
@@ -42,6 +43,11 @@ class WebLinkActivity : AppCompatActivity() {
         override fun shouldOverrideUrlLoading(view: WebView, url: String): Boolean {
             with(view) { loadUrl(url) }
             return true
+        }
+
+        override fun onPageFinished(view: WebView?, url: String?) {
+            super.onPageFinished(view, url)
+            binding?.progressBar?.visibility = View.GONE
         }
     }
 }
