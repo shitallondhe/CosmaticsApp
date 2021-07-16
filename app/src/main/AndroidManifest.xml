@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.example.cosmaticshop">
+    package="com.example.cosmeticshop">
 
     <!-- Permissions -->
     <uses-permission android:name="android.permission.INTERNET" />
@@ -20,14 +20,14 @@
         android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
         tools:ignore="AllowBackup">
         <!--WebView Activity-->
-        <activity android:name=".ui.weblink.WebLinkActivity"
+        <activity android:name="com.example.cosmeticshop.ui.weblink.WebLinkActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
         <!--ProductDetails Activity-->
-        <activity android:name=".ui.productdetails.view.ProductDetailActivity" />
+        <activity android:name="com.example.cosmeticshop.ui.productdetails.view.ProductDetailActivity" />
        <!-- ProductTypes Activity-->
-        <activity android:name=".ui.producttype.view.ProductTypeActivity" />
+        <activity android:name="com.example.cosmeticshop.ui.producttype.view.ProductTypeActivity" />
        <!-- SplashScreen-->
-        <activity android:name=".ui.splash.view.SplashActivity"
+        <activity android:name="com.example.cosmeticshop.ui.splash.view.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
        <!-- BrandWise Details-->
-        <activity android:name=".ui.main.view.MainActivity" />
+        <activity android:name="com.example.cosmeticshop.ui.main.view.MainActivity" />
     </application>
 
 </manifest>
