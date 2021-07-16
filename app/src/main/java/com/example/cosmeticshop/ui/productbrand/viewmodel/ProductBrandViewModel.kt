@@ -1,4 +1,4 @@
-package com.example.cosmeticshop.ui.main.viewmodel
+package com.example.cosmeticshop.ui.productbrand.viewmodel
 
 import android.util.Log
 import androidx.lifecycle.LiveData
@@ -6,7 +6,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.cosmeticshop.data.model.MakeUpProductsModel
-import com.example.cosmeticshop.data.repository.MainRepository
+import com.example.cosmeticshop.data.repository.MakeUpProductRepository
 import com.example.cosmeticshop.utils.NetworkHelper
 import com.example.cosmeticshop.utils.Resource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -14,26 +14,21 @@ import kotlinx.coroutines.launch
 import java.io.IOException
 import javax.inject.Inject
 
-/**
- * View model of the main screen
- */
+
 @HiltViewModel
-class MainViewModel @Inject constructor(
-    private val mainRepository: MainRepository,
+class ProductBrandViewModel @Inject constructor(
+    private val makeUpProductRepository: MakeUpProductRepository,
     private val networkHelper: NetworkHelper
 ) : ViewModel() {
 
     private val makeUpProductList = MutableLiveData<Resource<List<MakeUpProductsModel>>>()
 
-    /**
-     * Returns the make up products
-     */
     fun fetchMakeUpProducts(): LiveData<Resource<List<MakeUpProductsModel>>> {
         try {
             if (networkHelper.isNetworkConnected()) {
                 viewModelScope.launch {
                     makeUpProductList.postValue(Resource.loading(null))
-                    mainRepository.getMakeUpProducts().let {
+                    makeUpProductRepository.getMakeUpProducts().let {
                         if (it.isSuccessful) {
                             makeUpProductList.postValue(Resource.success(it.body()))
                             Log.e("Product", it.body().toString())

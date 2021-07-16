@@ -3,31 +3,28 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.example.cosmeticshop">
 
-    <!-- Permissions -->
-    <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
 
     <application
         android:name=".MakeUpApplication"
         android:allowBackup="true"
+        android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
         android:icon="@mipmap/ic_app"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_app"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true"
-        tools:targetApi="m"
-        android:configChanges="orientation|screenSize|screenLayout|keyboardHidden"
-        tools:ignore="AllowBackup">
-        <!--WebView Activity-->
-        <activity android:name="com.example.cosmeticshop.ui.weblink.WebLinkActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar"/>
-        <!--ProductDetails Activity-->
+        tools:ignore="AllowBackup"
+        tools:targetApi="m">
+        <activity
+            android:name="com.example.cosmeticshop.ui.weblink.WebLinkActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name="com.example.cosmeticshop.ui.productdetails.view.ProductDetailActivity" />
-       <!-- ProductTypes Activity-->
         <activity android:name="com.example.cosmeticshop.ui.producttype.view.ProductTypeActivity" />
-       <!-- SplashScreen-->
-        <activity android:name="com.example.cosmeticshop.ui.splash.view.SplashActivity"
+        <activity
+            android:name="com.example.cosmeticshop.ui.splash.view.SplashActivity"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -35,8 +32,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-       <!-- BrandWise Details-->
-        <activity android:name="com.example.cosmeticshop.ui.main.view.MainActivity" />
+        <activity android:name="com.example.cosmeticshop.ui.productbrand.view.ProductBrandActivity" />
     </application>
+
 
 </manifest>

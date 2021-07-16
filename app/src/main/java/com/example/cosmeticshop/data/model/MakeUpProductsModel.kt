@@ -6,9 +6,6 @@ import com.example.cosmeticshop.utils.Constants.Companion.DEFAULT_INT
 import com.example.cosmeticshop.utils.Constants.Companion.DEFAULT_STRING
 import com.google.gson.annotations.SerializedName
 
-/**
- * Data class which holds data related to the Make up products
- */
 data class MakeUpProductsModel(
 
     @SerializedName("id")
@@ -23,58 +20,44 @@ data class MakeUpProductsModel(
     @SerializedName("price")
     var price: String? = DEFAULT_STRING,
 
-
     @SerializedName("price_sign")
     var priceSign: String? = DEFAULT_STRING,
-
 
     @SerializedName("currency")
     var currency: String? = DEFAULT_STRING,
 
-
     @SerializedName("image_link")
     var imageLink: String? = null,
-
 
     @SerializedName("product_link")
     var productLink: String? = DEFAULT_STRING,
 
-
     @SerializedName("website_link")
     var websiteLink: String? = DEFAULT_STRING,
-
 
     @SerializedName("description")
     var description: String? = DEFAULT_STRING,
 
-
     @SerializedName("rating")
     var rating: Any? = null,
-
 
     @SerializedName("category")
     var category: String? = DEFAULT_STRING,
 
-
     @SerializedName("product_type")
     var productType: String? = null,
-
 
     @SerializedName("tag_list")
     var tagList: List<String>? = null,
 
-
     @SerializedName("created_at")
     var createdAt: String? = DEFAULT_STRING,
-
 
     @SerializedName("updated_at")
     var updatedAt: String? = DEFAULT_STRING,
 
-
     @SerializedName("product_api_url")
     var productApiUrl: String? = DEFAULT_STRING,
-
 
     @SerializedName("api_featured_image")
     var apiFeaturedImage: String? = DEFAULT_STRING,
@@ -94,9 +77,7 @@ data class MakeUpProductsModel(
         parcel.readString(),
         parcel.readString()
 
-
     )
-
 
     override fun writeToParcel(parcel: Parcel, flags: Int) {
         parcel.writeValue(id)

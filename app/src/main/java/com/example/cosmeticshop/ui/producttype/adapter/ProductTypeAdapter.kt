@@ -12,9 +12,6 @@ import com.example.cosmeticshop.data.model.MakeUpProductsModel
 import com.example.cosmeticshop.databinding.ItemProductTypeBinding
 import com.example.cosmeticshop.ui.producttype.listners.ProductTypeInterface
 
-/**
- * Product Type Adapter
- */
 class ProductTypeAdapter(
     private val makeupList: ArrayList<MakeUpProductsModel>,
     var productTypeInterface: ProductTypeInterface? = null
@@ -23,13 +20,13 @@ class ProductTypeAdapter(
     inner class DataViewHolder(var binding: ItemProductTypeBinding) : RecyclerView.ViewHolder(
         binding.root
     ) {
-        @SuppressLint("DefaultLocale")
+
         fun bind(makeup: MakeUpProductsModel) {
 
             binding.apply {
                 tvProductName.text = makeup.productType
                 tvProductDescription.text = makeup.description
-                //number of line you want to short
+
                 tvProductDescription.setShowingLine(4)
 
                 tvProductDescription.addShowMoreText("Continue")
@@ -55,7 +52,6 @@ class ProductTypeAdapter(
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DataViewHolder {
-
         val inflater = LayoutInflater.from(parent.context)
         val binding =
             DataBindingUtil.inflate<ItemProductTypeBinding>(
@@ -64,9 +60,7 @@ class ProductTypeAdapter(
                 parent,
                 false
             )
-
         return DataViewHolder(binding)
-
     }
 
     override fun getItemCount(): Int = makeupList.size

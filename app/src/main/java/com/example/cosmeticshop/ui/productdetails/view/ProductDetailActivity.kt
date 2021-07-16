@@ -12,9 +12,6 @@ import com.example.cosmeticshop.utils.Constants
 import com.example.cosmeticshop.utils.Constants.Companion.WEB_LINK
 import java.util.*
 
-/**
- * ProductDetailActivity
- */
 class ProductDetailActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProductDetailBinding
     private  var makeUpProductsModel: MakeUpProductsModel?=null
@@ -35,9 +32,7 @@ class ProductDetailActivity : AppCompatActivity() {
         val productPrice =makeUpProductsModel?.price
 
         binding.tvPrice.text = ("$priceSign $productPrice")
-        /**
-         * Handles the click on the product type
-         */
+
         binding.txtShowMore.setOnClickListener {
             Intent().apply {
                 intent = Intent(this@ProductDetailActivity, WebLinkActivity::class.java)

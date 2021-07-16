@@ -17,9 +17,6 @@ import com.example.cosmeticshop.utils.Constants.Companion.MAKE_UP_MODEL
 import com.example.cosmeticshop.utils.Status
 import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * Product Type Activity
- */
 @AndroidEntryPoint
 class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
     lateinit var binding: ActivityProductTypeBinding
@@ -38,16 +35,12 @@ class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
         setupUI()
         setupObserver(brandName)
 
-        //Click Listener on Retry Button
         binding.btnRetry.setOnClickListener {
             setupObserver(brandName)
         }
 
     }
 
-    /**
-     * Setups Observers
-     */
     private fun setupObserver(brandName: String?) {
         productTypeViewModel.fetchBrandWiseDetails(brandName).observe(this, {
             when (it.status) {
@@ -69,26 +62,17 @@ class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
 
     }
 
-    /**
-     * Renders the list of make up products
-     */
     private fun renderList(makeUpList: List<MakeUpProductsModel>) {
         productTypeAdapter?.addData(makeUpList)
         productTypeAdapter?.notifyDataSetChanged()
     }
 
-    /**
-     * RecyclerView Visibility Visible
-     */
     private fun showRecyclerView() {
         binding.progressBarLoading.visibility = View.GONE
         binding.recyclerViewProductList.visibility = View.VISIBLE
         binding.btnRetry.visibility = View.GONE
     }
 
-    /**
-     * ProgressBar Visibility Visible
-     */
     private fun showProgressBar() {
         binding.progressBarLoading.visibility = View.VISIBLE
         binding.recyclerViewProductList.visibility = View.GONE
@@ -96,28 +80,20 @@ class ProductTypeActivity : AppCompatActivity(), ProductTypeInterface {
 
     }
 
-    /**
-     * RetryImage Visibility Visible
-     */
     private fun showRetryImage(message: String?) {
         binding.progressBarLoading.visibility = View.GONE
         binding.recyclerViewProductList.visibility = View.GONE
         binding.btnRetry.visibility = View.VISIBLE
-        //Toast.makeText(this, message, Toast.LENGTH_LONG).show()
+
     }
 
-    /**
-     * Setups the UI
-     */
     private fun setupUI() {
         binding.recyclerViewProductList.layoutManager = LinearLayoutManager(this)
         productTypeAdapter = ProductTypeAdapter(arrayListOf(), productTypeInterface)
         binding.recyclerViewProductList.adapter = productTypeAdapter
     }
 
-    /**
-     * Handles the click on the product type
-     */
+
     override fun clickOnProductType(makeUpProductsModel: MakeUpProductsModel) {
         Intent().apply {
             intent = Intent(this@ProductTypeActivity, ProductDetailActivity::class.java)

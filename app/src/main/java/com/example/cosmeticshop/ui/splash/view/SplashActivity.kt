@@ -7,13 +7,9 @@ import android.os.Handler
 import android.os.Looper
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cosmeticshop.databinding.ActivitySplashBinding
-import com.example.cosmeticshop.ui.main.view.MainActivity
+import com.example.cosmeticshop.ui.productbrand.view.ProductBrandActivity
 import dagger.hilt.android.AndroidEntryPoint
 
-
-/**
- * Splash Screen
- */
 @AndroidEntryPoint
 class SplashActivity : AppCompatActivity() {
     private var activitySplashBinding: ActivitySplashBinding? = null
@@ -23,22 +19,16 @@ class SplashActivity : AppCompatActivity() {
         activitySplashBinding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(activitySplashBinding?.root)
         setUpSplash()
-
     }
 
-    /**
-     * Setups splash screen
-     */
     private fun setUpSplash() {
 
-        // we used the postDelayed(Runnable, time) method
-        // to send a message with a delayed time.
         val mTime = 3000L
         Handler(Looper.getMainLooper()).postDelayed({
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this, ProductBrandActivity::class.java)
             startActivity(intent)
             finish()
-        }, mTime) // 3000 is the delayed time in milliseconds.
+        }, mTime)
 
     }
 }

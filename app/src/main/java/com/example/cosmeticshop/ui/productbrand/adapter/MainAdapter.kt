@@ -1,4 +1,4 @@
-package com.example.cosmeticshop.ui.main.adapter
+package com.example.cosmeticshop.ui.productbrand.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
@@ -9,12 +9,9 @@ import com.bumptech.glide.Glide
 import com.example.cosmeticshop.R
 import com.example.cosmeticshop.data.model.MakeUpProductsModel
 import com.example.cosmeticshop.databinding.ItemLayoutBinding
-import com.example.cosmeticshop.ui.main.listners.MainInterface
+import com.example.cosmeticshop.ui.productbrand.listners.MainInterface
 import kotlin.collections.ArrayList
 
-/**
- * Main Adapter class
- */
 class MainAdapter(
     private val makeUpList: ArrayList<MakeUpProductsModel>,
     var mainInterface: MainInterface? = null

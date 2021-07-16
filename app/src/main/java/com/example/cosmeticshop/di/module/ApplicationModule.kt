@@ -15,17 +15,14 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-/**
- * Dependency Injector class which is responsible for providing essential info
- */
+
 @Module
 @InstallIn(SingletonComponent::class)
 class ApplicationModule {
-    // returns Base URL
+
     @Provides
     fun provideBaseUrl() = BASE_URL
 
-    // returns instance of okHttpClient
     @Provides
     @Singleton
     fun provideOkHttpClient() = if (BuildConfig.DEBUG) {
@@ -38,7 +35,6 @@ class ApplicationModule {
         .Builder()
         .build()
 
-    // returns instance of retrofit
     @Provides
     @Singleton
     fun provideRetrofit(
@@ -51,12 +47,10 @@ class ApplicationModule {
             .client(okHttpClient)
             .build()
 
-    // returns instance of API service
     @Provides
     @Singleton
     fun provideApiService(retrofit: Retrofit): ApiService = retrofit.create(ApiService::class.java)
 
-    // returns instance of API Helper
     @Provides
     @Singleton
     fun provideApiHelper(apiHelper: ApiHelperImpl): ApiHelper = apiHelper

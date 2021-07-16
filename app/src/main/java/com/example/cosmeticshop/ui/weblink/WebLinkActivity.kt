@@ -7,10 +7,10 @@ import android.webkit.WebViewClient
 import androidx.appcompat.app.AppCompatActivity
 import com.example.cosmeticshop.databinding.ActivityWebLinkBinding
 import com.example.cosmeticshop.utils.Constants.Companion.WEB_LINK
+import dagger.hilt.android.AndroidEntryPoint
 
-/**
- * WebLinkActivity
- */
+
+@AndroidEntryPoint
 class WebLinkActivity : AppCompatActivity() {
     var binding: ActivityWebLinkBinding? = null
     private var weblink: String? = null
@@ -25,9 +25,6 @@ class WebLinkActivity : AppCompatActivity() {
 
     }
 
-    /**
-     *Open Weblink in WebView
-     **/
     private fun openWebView(weblink: String?) {
 
         if (weblink == null || weblink.isEmpty()) finish()
